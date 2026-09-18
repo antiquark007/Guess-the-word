@@ -1,0 +1,42 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+
+<h1>Guess The Word</h1>
+
+<p>
+    Start a game and guess the five-letter word.
+</p>
+
+<button id="start-game" type="button">
+    Start Game
+</button>
+
+<p id="message" role="status"></p>
+
+<div id="game-board" class="game-board" aria-live="polite"></div>
+
+<div class="guess-controls">
+    <label for="guess">Your guess:</label>
+
+    <input
+        type="text"
+        id="guess"
+        maxlength="5"
+        minlength="5"
+        pattern="[A-Za-z]{5}"
+        autocomplete="off"
+        required
+        disabled
+    >
+
+    <button id="submit-guess" type="button" disabled>
+        Submit Guess
+    </button>
+</div>
+
+{% load static %}
+
+<script src="{% static 'game/js/game.js' %}"></script>
+
+{% endblock %}

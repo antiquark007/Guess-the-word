@@ -1,0 +1,27 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+
+<h1>Admin Reports</h1>
+
+<section class="report-section">
+    <h2>Daily report</h2>
+    <label for="report-date">Date:</label>
+    <input type="date" id="report-date" required>
+    <button id="get-day-report" type="button">View Report</button>
+    <div id="day-report" class="report-output" aria-live="polite"></div>
+</section>
+
+<section class="report-section">
+    <h2>User report</h2>
+    <label for="user-id">User ID:</label>
+    <input type="number" id="user-id" min="1" required>
+    <button id="get-user-report" type="button">View Report</button>
+    <div id="user-report" class="report-output" aria-live="polite"></div>
+</section>
+
+{% load static %}
+
+<script src="{% static 'game/js/reports.js' %}"></script>
+
+{% endblock %}

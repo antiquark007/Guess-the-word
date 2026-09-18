@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Guess The Word</title>
+
+    {% load static %}
+
+    <link
+        rel="stylesheet"
+        href="{% static 'game/css/style.css' %}"
+    >
+
+</head>
+
+<body>
+
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="/login/">Login</a>
+
+        <a href="/register/">Register</a>
+
+        <a href="/game/">Game</a>
+
+    </nav>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>

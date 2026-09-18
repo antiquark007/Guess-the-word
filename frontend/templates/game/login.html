@@ -1,0 +1,41 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+
+<h1>Login</h1>
+
+<form id="login-form">
+
+    <label>Username:</label>
+
+    <input
+        type="text"
+        id="username"
+        required
+    >
+
+    <br><br>
+
+    <label>Password:</label>
+
+    <input
+        type="password"
+        id="password"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">
+        Login
+    </button>
+
+</form>
+
+<p id="message"></p>
+
+{% load static %}
+
+<script src="{% static 'game/js/login.js' %}"></script>
+
+{% endblock %}
