@@ -18,8 +18,11 @@ if (registerForm) {
             const password =
                 document.getElementById("password").value;
 
+            const role =
+                document.querySelector('input[name="role"]:checked').value;
+
             const response = await fetch(
-                `${FASTAPI_URL}/api/register?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+                `${FASTAPI_URL}/api/register?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&role=${role}`,
                 {
                     method: "POST"
                 }

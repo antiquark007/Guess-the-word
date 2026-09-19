@@ -1,3 +1,4 @@
+# Creates and configures the FastAPI application and its API routes.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -14,6 +15,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
+#allowing the diff api req onto it
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[

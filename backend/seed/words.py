@@ -1,3 +1,4 @@
+# Seeds the database with the game's predefined words.
 from backend.database.connection import SessionLocal
 from backend.database.models import Word
 

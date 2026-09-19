@@ -2,37 +2,43 @@
 
 {% block content %}
 
-<h1>Register</h1>
+<section class="form-layout">
+    <div class="form-intro">
+        <p class="eyebrow">Make it yours</p>
+        <h1>Build your<br><em>word habit.</em></h1>
+        <p>Create a free account and keep your daily streak of clever guesses going.</p>
+    </div>
 
-<form id="register-form">
+    <div class="form-card">
+        <h2>Create account</h2>
+        <p class="form-subtitle">Just the essentials. You can start playing right away.</p>
+        <form id="register-form">
 
-    <label>Username:</label>
+            <label for="username">Username</label>
 
-    <input
-        type="text"
-        id="username"
-        required
-    >
+            <input type="text" id="username" placeholder="Choose a username" required>
 
-    <br><br>
+            <fieldset class="role-picker">
+                <legend>Account type</legend>
+                <div class="role-toggle">
+                    <input type="radio" id="role-player" name="role" value="PLAYER" checked>
+                    <label for="role-player"><strong>Player</strong></label>
+                    <input type="radio" id="role-admin" name="role" value="ADMIN">
+                    <label for="role-admin"><strong>Admin</strong></label>
+                </div>
+            </fieldset>
 
-    <label>Password:</label>
+            <label for="password">Password</label>
 
-    <input
-        type="password"
-        id="password"
-        required
-    >
+            <input type="password" id="password" placeholder="At least 5 characters" required>
 
-    <br><br>
+            <button class="button button-primary" type="submit">Register <span aria-hidden="true">→</span></button>
+        </form>
 
-    <button type="submit">
-        Register
-    </button>
-
-</form>
-
-<p id="message"></p>
+        <p id="message" class="form-message" role="status"></p>
+        <p class="form-footer">Already have an account? <a href="/login/">Log in</a></p>
+    </div>
+</section>
 
 {% load static %}
 

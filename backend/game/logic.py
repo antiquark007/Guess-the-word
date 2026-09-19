@@ -1,3 +1,4 @@
+# Evaluates guessed letters against the target word.
 from collections import Counter
 
 
@@ -10,8 +11,8 @@ def evaluate_guess(
 
     remaining = Counter()
 
-    # First pass:
-    # Find exact matches.
+    # First pass
+    # Find exact matches
     for i in range(5):
 
         if guess[i] == target[i]:
@@ -22,8 +23,8 @@ def evaluate_guess(
 
             remaining[target[i]] += 1
 
-    # Second pass:
-    # Find correct letters in wrong positions.
+    # Second pass
+    # Find correct letters in wrong positions
     for i in range(5):
 
         if result[i] == "GREEN":

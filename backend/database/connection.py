@@ -1,4 +1,4 @@
-#database connection and the session
+# Configures database settings, connections, sessions, and dependencies.
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker

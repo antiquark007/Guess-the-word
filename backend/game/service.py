@@ -1,3 +1,4 @@
+# Manages game creation, guess validation, scoring, and game results.
 from datetime import datetime, timedelta
 import random
 
@@ -33,8 +34,9 @@ def start_game(
     user: User
 ):
 
-    start, end = get_today_range()
+    start, end = get_today_range()# one day range 
 
+    #total no of the games played today 
     games_today = (
         db.query(Game)
         .filter(
@@ -46,21 +48,13 @@ def start_game(
     )
     
     # test the today limit
-    if games_today >= MAX_GAMES_PER_DAY:
-        raise HTTPException(
-            status_code=400,
-            detail="You can play only 3 games per day."
-        )
+    if games_today >= MAX_GAMES_PER_DAY: raise HTTPException(status_code=400, detail="You can play only 3 games per day.")
 
     words = db.query(Word).all()
 
-    if not words:
-        raise HTTPException(
-            status_code=500,
-            detail="No words available."
-        )
+    if not words: raise HTTPException(status_code=500, detail="No words available.")
 
-    selected_word = random.choice(words)
+    selected_word = random.choice(words)#pick random word from db words
 
     game = Game(user_id=user.id,word_id=selected_word.id,status="IN_PROGRESS",number_of_guesses=0)
 
@@ -68,7 +62,7 @@ def start_game(
     db.commit()
     db.refresh(game)
 
-    return game
+    return game# adds and gives the current game ins from the db
 
 
 def submit_guess(
@@ -87,47 +81,19 @@ def submit_guess(
         .first()
     )
 
-    if not game:
 
-        raise HTTPException(
-            status_code=404,
-            detail="Game not found."
-        )
+   #few important checks for the current game to be submit
+    if not game: raise HTTPException(status_code=404, detail="Game not found.")
 
-    if game.status != "IN_PROGRESS":
+    if game.status != "IN_PROGRESS": raise HTTPException(status_code=400, detail="This game is already completed.")
 
-        raise HTTPException(
-            status_code=400,
-            detail="This game is already completed."
-        )
+    if len(guess) != 5: raise HTTPException(status_code=400, detail="Guess must contain exactly 5 letters.")
 
-    if len(guess) != 5:
+    if not guess.isalpha(): raise HTTPException(status_code=400, detail="Guess must contain only letters.")
 
-        raise HTTPException(
-            status_code=400,
-            detail="Guess must contain exactly 5 letters."
-        )
+    if not guess.isupper(): raise HTTPException(status_code=400, detail="Guess must be uppercase.")
 
-    if not guess.isalpha():
-
-        raise HTTPException(
-            status_code=400,
-            detail="Guess must contain only letters."
-        )
-
-    if not guess.isupper():
-
-        raise HTTPException(
-            status_code=400,
-            detail="Guess must be uppercase."
-        )
-
-    if game.number_of_guesses >= MAX_GUESSES_PER_GAME:
-
-        raise HTTPException(
-            status_code=400,
-            detail="Maximum 5 guesses allowed."
-        )
+    if game.number_of_guesses >= MAX_GUESSES_PER_GAME: raise HTTPException(status_code=400, detail="Maximum 5 guesses allowed.")
 
     word = (
         db.query(Word)
@@ -137,10 +103,7 @@ def submit_guess(
 
     target = word.word
 
-    result = evaluate_guess(
-        target,
-        guess
-    )
+    result = evaluate_guess(target, guess)#returns a list of five color results after matching each of the digits
 
     guess_number = game.number_of_guesses + 1
 

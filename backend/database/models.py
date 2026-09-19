@@ -1,4 +1,4 @@
-#schema of the user ,word ,game,guess
+# Defines the database models for users, words, games, and guesses.
 
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey

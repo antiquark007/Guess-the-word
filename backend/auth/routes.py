@@ -1,3 +1,4 @@
+# Provides API endpoints for user registration and login.
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
@@ -16,8 +17,17 @@ router = APIRouter(
 def register(
     username: str,
     password: str,
+    role: str = "PLAYER",
     db: Session = Depends(get_db)
 ):
+
+    role = role.upper()
+
+    if role not in {"PLAYER", "ADMIN"}:
+        raise HTTPException(
+            status_code=400,
+            detail="Role must be PLAYER or ADMIN."
+        )
 
     if not validate_username(username):
         raise HTTPException(
@@ -49,11 +59,10 @@ def register(
             status_code=400,
             detail="Username already exists"
         )
-    #TODO: the role must be coming from the user instead of the delfault player
     user = User(
         username=username,
         password_hash=hash_password(password),
-        role="PLAYER"
+        role=role
     )
 
     db.add(user)

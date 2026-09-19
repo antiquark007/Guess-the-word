@@ -2,38 +2,31 @@
 
 {% block content %}
 
-<h1>Guess The Word</h1>
+<section class="game-header">
+    <div>
+        <p class="eyebrow">Today's challenge</p>
+        <h1>Guess the word.</h1>
+        <p>Green means right. Orange means close. Five tries to make it click.</p>
+    </div>
+    <div class="game-limit"><strong>03</strong><span>games<br>today</span></div>
+</section>
 
-<p>
-    Start a game and guess the five-letter word.
-</p>
+<section class="game-panel">
+    <div class="game-toolbar">
+        <button id="start-game" class="button button-primary" type="button">Start a new game <span aria-hidden="true">→</span></button>
+        <p id="message" role="status">Your board is waiting.</p>
+    </div>
 
-<button id="start-game" type="button">
-    Start Game
-</button>
+    <div id="game-board" class="game-board" aria-live="polite"></div>
 
-<p id="message" role="status"></p>
+    <div class="guess-controls">
+        <label for="guess">Your guess</label>
 
-<div id="game-board" class="game-board" aria-live="polite"></div>
+        <input type="text" id="guess" maxlength="5" minlength="5" pattern="[A-Za-z]{5}" autocomplete="off" placeholder="_____" required disabled>
 
-<div class="guess-controls">
-    <label for="guess">Your guess:</label>
-
-    <input
-        type="text"
-        id="guess"
-        maxlength="5"
-        minlength="5"
-        pattern="[A-Za-z]{5}"
-        autocomplete="off"
-        required
-        disabled
-    >
-
-    <button id="submit-guess" type="button" disabled>
-        Submit Guess
-    </button>
-</div>
+        <button id="submit-guess" class="button button-dark" type="button" disabled>Submit guess</button>
+    </div>
+</section>
 
 {% load static %}
 

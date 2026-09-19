@@ -2,22 +2,30 @@
 
 {% block content %}
 
-<h1>Admin Reports</h1>
-
-<section class="report-section">
-    <h2>Daily report</h2>
-    <label for="report-date">Date:</label>
-    <input type="date" id="report-date" required>
-    <button id="get-day-report" type="button">View Report</button>
-    <div id="day-report" class="report-output" aria-live="polite"></div>
+<section class="page-heading">
+    <p class="eyebrow">The numbers behind the guesses</p>
+    <h1>Admin reports</h1>
+    <p>Check daily activity or follow one player's word-game history.</p>
 </section>
 
-<section class="report-section">
-    <h2>User report</h2>
-    <label for="user-id">User ID:</label>
-    <input type="number" id="user-id" min="1" required>
-    <button id="get-user-report" type="button">View Report</button>
-    <div id="user-report" class="report-output" aria-live="polite"></div>
+<section class="reports-grid">
+    <div class="report-section">
+        <span class="section-number">01</span>
+        <h2>Daily report</h2>
+        <p>See how the community played on a particular day.</p>
+        <label for="report-date">Choose a date</label>
+        <div class="inline-form"><input type="date" id="report-date" required><button class="button button-dark" id="get-day-report" type="button">View</button></div>
+        <div id="day-report" class="report-output" aria-live="polite"></div>
+    </div>
+
+    <div class="report-section">
+        <span class="section-number">02</span>
+        <h2>User report</h2>
+        <p>Review one player's attempts over time.</p>
+        <label for="user-id">User ID</label>
+        <div class="inline-form"><input type="number" id="user-id" min="1" placeholder="e.g. 12" required><button class="button button-dark" id="get-user-report" type="button">View</button></div>
+        <div id="user-report" class="report-output" aria-live="polite"></div>
+    </div>
 </section>
 
 {% load static %}

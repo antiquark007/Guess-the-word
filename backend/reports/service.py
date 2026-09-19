@@ -1,12 +1,10 @@
+# Builds daily and per-user game reports from database records.
 from datetime import datetime, timedelta
 from collections import defaultdict
 
 from sqlalchemy.orm import Session
 
-from backend.database.models import (
-    User,
-    Game
-)
+from backend.database.models import  User, Game
 
 
 def get_day_range(date):

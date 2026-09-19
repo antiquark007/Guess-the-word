@@ -1,3 +1,4 @@
+# Provides API endpoints for starting games and submitting guesses.
 from fastapi import (APIRouter,Depends)
 
 from sqlalchemy.orm import Session
@@ -8,7 +9,7 @@ from backend.database.models import User
 
 from .service import (start_game,submit_guess)
 
-
+#default routes
 router = APIRouter(
     prefix="/api/game",
     tags=["Game"]

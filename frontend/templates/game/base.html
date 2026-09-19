@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Guess The Word</title>
 
     {% load static %}
@@ -16,22 +17,25 @@
 
 <body>
 
-    <nav>
+    <header class="site-header">
+        <a class="brand" href="/">
+            <span class="brand-mark">?</span>
+            <span>Guess<span class="brand-accent">.</span></span>
+        </a>
 
-        <a href="/">Home</a>
+        <nav aria-label="Main navigation">
+            <a href="/">Home</a>
+            <a href="/game/">Play</a>
+            <a href="/login/">Login</a>
+            <a href="/register/" class="nav-cta">Join free</a>
+        </nav>
+    </header>
 
-        <a href="/login/">Login</a>
+    <main class="page-shell">
+        {% block content %}{% endblock %}
+    </main>
 
-        <a href="/register/">Register</a>
-
-        <a href="/game/">Game</a>
-
-    </nav>
-
-    <hr>
-
-    {% block content %}
-    {% endblock %}
+    <footer class="site-footer">A small daily word ritual · Three games a day</footer>
 
 </body>
 

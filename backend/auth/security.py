@@ -1,4 +1,4 @@
-#password validation,hashing,verification and JWT creation along with current user authentication
+# Provides password validation, hashing, JWT creation, and user authentication.
 from datetime import datetime, timedelta
 
 import bcrypt

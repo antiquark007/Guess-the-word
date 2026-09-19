@@ -2,24 +2,33 @@
 
 {% block content %}
 
-<h1>Guess The Word</h1>
+<section class="hero home-hero">
+    <div class="hero-copy">
+        <p class="eyebrow">A five-letter daily ritual</p>
+        <h1>Find the word.<br><em>Trust your hunch.</em></h1>
+        <p class="hero-text">A quick, satisfying word game for sharp minds and curious guesses. You get five tries to find today's hidden word.</p>
 
-<p>
-    Welcome to the Guess The Word game.
-</p>
+        <div class="hero-actions">
+            <a class="button button-primary" href="/login/">Start playing <span aria-hidden="true">→</span></a>
+            <a class="text-link" href="/register/">Create an account</a>
+        </div>
+    </div>
 
-<p>
-    You can play up to 3 games per day.
-</p>
+    <div class="hero-art" aria-label="Example word tiles">
+        <span class="floating-note note-top">5 tries</span>
+        <div class="word-stack">
+            <div class="mini-row"><span class="mini-cell warm">S</span><span class="mini-cell">P</span><span class="mini-cell">A</span><span class="mini-cell">R</span><span class="mini-cell">K</span></div>
+            <div class="mini-row"><span class="mini-cell">C</span><span class="mini-cell right">L</span><span class="mini-cell">O</span><span class="mini-cell">U</span><span class="mini-cell">D</span></div>
+            <div class="mini-row"><span class="mini-cell">W</span><span class="mini-cell">O</span><span class="mini-cell right">R</span><span class="mini-cell">D</span><span class="mini-cell">S</span></div>
+        </div>
+        <span class="floating-note note-bottom">3 games / day</span>
+    </div>
+</section>
 
-<a href="/login/">
-    Login
-</a>
-
-<br><br>
-
-<a href="/register/">
-    Create Account
-</a>
+<section class="feature-strip" aria-label="Game features">
+    <div><strong>01</strong><span>Five letters,<br>one answer.</span></div>
+    <div><strong>02</strong><span>Useful clues<br>every round.</span></div>
+    <div><strong>03</strong><span>A fresh challenge<br>each day.</span></div>
+</section>
 
 {% endblock %}
