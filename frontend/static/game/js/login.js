@@ -1,6 +1,3 @@
-const FASTAPI_URL = "http://127.0.0.1:8000";
-
-
 // REGISTER
 const registerForm = document.getElementById("register-form");
 
@@ -21,8 +18,8 @@ if (registerForm) {
             const role =
                 document.querySelector('input[name="role"]:checked').value;
 
-            const response = await fetch(
-                `${FASTAPI_URL}/api/register?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&role=${role}`,
+            const response = await apiFetch(
+                `/api/register?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&role=${role}`,
                 {
                     method: "POST"
                 }
@@ -54,8 +51,8 @@ if (loginForm) {
             const password =
                 document.getElementById("password").value;
 
-            const response = await fetch(
-                `${FASTAPI_URL}/api/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+            const response = await apiFetch(
+                `/api/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
                 {
                     method: "POST"
                 }

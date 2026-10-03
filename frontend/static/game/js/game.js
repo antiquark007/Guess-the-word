@@ -1,5 +1,3 @@
-const FASTAPI_URL = "http://127.0.0.1:8000";
-
 let gameId = null;
 let guessCount = 0;
 
@@ -46,8 +44,8 @@ startButton.addEventListener(
                 return;
             }
 
-            const response = await fetch(
-                `${FASTAPI_URL}/api/game/start`,
+            const response = await apiFetch(
+                "/api/game/start",
                 {
                     method: "POST",
 
@@ -107,8 +105,8 @@ submitButton.addEventListener(
 
             const token = getToken();
 
-            const response = await fetch(
-                `${FASTAPI_URL}/api/game/${gameId}/guess?guess=${encodeURIComponent(guess)}`,
+            const response = await apiFetch(
+                `/api/game/${gameId}/guess?guess=${encodeURIComponent(guess)}`,
                 {
                     method: "POST",
 

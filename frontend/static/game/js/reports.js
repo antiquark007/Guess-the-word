@@ -1,6 +1,3 @@
-const FASTAPI_URL = "http://127.0.0.1:8000";
-
-
 function getToken() {
 
     return localStorage.getItem(
@@ -24,8 +21,8 @@ document
 
             const token = getToken();
 
-            const response = await fetch(
-                `${FASTAPI_URL}/api/admin/report/day?report_date=${date}`,
+            const response = await apiFetch(
+                `/api/admin/report/day?report_date=${date}`,
                 {
                     headers: {
                         "Authorization":
@@ -81,8 +78,8 @@ document
 
             const token = getToken();
 
-            const response = await fetch(
-                `${FASTAPI_URL}/api/admin/report/user/${userId}`,
+            const response = await apiFetch(
+                `/api/admin/report/user/${userId}`,
                 {
                     headers: {
                         "Authorization":

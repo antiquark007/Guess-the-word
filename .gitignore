@@ -36,4 +36,8 @@ dist/
 .vscode/
 .idea/
 .DS_Store
-Thumbs.db
+Thumbs.db   
+#java backend 
+java-backend/target/
+java-backend/data/
+
